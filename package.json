@@ -1,0 +1,38 @@
+{
+  "name": "lorem-ipsum-generator",
+  "version": "1.0.0",
+  "description": "A lorem ipsum generator",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/openwebtools/lorem-ipsum-generator.git"
+  },
+  "keywords": [
+    "lorem",
+    "ipsum",
+    "lorem",
+    "ipsum",
+    "generator"
+  ],
+  "author": "Open Web Tools",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/openwebtools/lorem-ipsum-generator/issues"
+  },
+  "homepage": "https://github.com/openwebtools/lorem-ipsum-generator#readme",
+  "dependencies": {
+    "antd": "^4.2.0",
+    "next": "^9.3.6",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@zeit/next-less": "^1.0.1",
+    "next-compose-plugins": "^2.2.0"
+  }
+}
