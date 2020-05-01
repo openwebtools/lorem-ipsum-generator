@@ -58,8 +58,8 @@ const AppToolbar = (props: any) => {
                     </Button>
                 </Input.Group>
                 
-                <Col xs={0} sm={12} style={copyButton}>
-                    <Button type='primary' icon={<CopyOutlined />} size='large' block danger>
+                <Col xs={0} sm={24} style={copyButton}>
+                    <Button type='primary' icon={<CopyOutlined />} size='large' danger block>
                         Copy
                     </Button>
                 </Col>
