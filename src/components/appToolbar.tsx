@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { PageHeader, Row, Col, Input, Divider, Button } from 'antd';
+import { PageHeader, Col, Input, Button, message } from 'antd';
 import CSS from 'csstype';
 import { InputNumber } from 'antd';
 import { Select } from 'antd';
 import { CopyOutlined } from '@ant-design/icons';
-import Index from '../../pages';
 
 const { Option } = Select;
 
@@ -42,10 +41,19 @@ const copyButton: CSS.Properties = {
 const AppToolbar = (props: any) => {
     const [number, setNumber] = useState(5);
     const [type, setType] = useState('paragraph');
+
+    const showGeneratedMsg = () => {
+        message.success('Successfully generated!')
+    };
+
+    const showCopiedMsg = () => {
+        message.success('Result copied!')
+    };
+
+    
     return (
         <div style={root}>
             <PageHeader title='Lorem Ipsum Generator' style={headerStyle}>
-                
                 <Input.Group compact size='large'>
                     <InputNumber min={1} max={1000} defaultValue={number} onChange={setNumber} size='large'/>
                     <Select defaultValue={type} style={{ width: 130 }} onChange={(value) => setType(value)} size='large'>
@@ -53,20 +61,20 @@ const AppToolbar = (props: any) => {
                         <Option value='statement'>Statements</Option>
                         <Option value='word'>Words</Option>
                     </Select>
-                    <Button type='primary' shape='round' size='large' >
+                    <Button type='primary' shape='round' size='large' onClick={showGeneratedMsg}>
                         Go
                     </Button>
                 </Input.Group>
                 
                 <Col xs={0} sm={24} style={copyButton}>
-                    <Button type='primary' icon={<CopyOutlined />} size='large' danger block>
+                    <Button type='primary' icon={<CopyOutlined />} size='large' danger block onClick={showCopiedMsg}>
                         Copy
                     </Button>
                 </Col>
                 
             </PageHeader>
             <Col xs={12} sm={0} style={copyButtonMobContainer}>
-                <Button type='primary' shape='round' size='large' style={copyButtonMob} icon={<CopyOutlined />} danger>
+                <Button type='primary' shape='round' size='large' style={copyButtonMob} icon={<CopyOutlined />} danger onClick={showCopiedMsg}>
                     Copy
                 </Button>
             </Col>

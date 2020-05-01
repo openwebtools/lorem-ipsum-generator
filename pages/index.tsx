@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import MainLayout from '../src/layouts/mainLayout';
-import { Card, Divider, Row, Col, Button, Affix  } from 'antd';
+import { Card } from 'antd';
 import CSS from 'csstype';
 import AppToolbar from '../src/components/appToolbar';
 
@@ -11,7 +11,6 @@ const cardStyle: CSS.Properties = {
 
 const Index = () => {
     
-  const [container, setContainer] = useState(null);
   return (
     <MainLayout>
         <AppToolbar/>
