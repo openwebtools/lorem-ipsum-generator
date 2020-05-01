@@ -49,11 +49,11 @@ const AppToolbar = (props: any) => {
                 <Input.Group compact size='large'>
                     <InputNumber min={1} max={1000} defaultValue={number} onChange={setNumber} size='large'/>
                     <Select defaultValue={type} style={{ width: 130 }} onChange={(value) => setType(value)} size='large'>
-                        <Option value="paragraph">Paragraphs</Option>
-                        <Option value="statement">Statements</Option>
-                        <Option value="word">Words</Option>
+                        <Option value='paragraph'>Paragraphs</Option>
+                        <Option value='statement'>Statements</Option>
+                        <Option value='word'>Words</Option>
                     </Select>
-                    <Button type="primary" shape="round" size='large' >
+                    <Button type='primary' shape='round' size='large' >
                         Go
                     </Button>
                 </Input.Group>

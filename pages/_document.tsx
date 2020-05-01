@@ -12,7 +12,7 @@ export default class AppDocument extends Document {
    */
   render(): JSX.Element {
     return (
-      <html lang="en">
+      <html lang='en'>
         <Head>
           <Header/>
         </Head>
