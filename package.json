@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/openwebtools/lorem-ipsum-generator#readme",
   "dependencies": {
+    "@ant-design/icons": "^4.1.0",
     "antd": "^4.2.0",
     "next": "^9.3.6",
     "react": "^16.13.1",
