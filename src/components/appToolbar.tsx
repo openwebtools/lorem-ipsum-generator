@@ -3,7 +3,7 @@ import { PageHeader, Col, Input, Button, message } from 'antd';
 import CSS from 'csstype';
 import { InputNumber } from 'antd';
 import { Select } from 'antd';
-import { CopyOutlined } from '@ant-design/icons';
+import CopyOutlined from '@ant-design/icons/CopyOutlined';
 
 const { Option } = Select;
 
