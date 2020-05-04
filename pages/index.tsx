@@ -1,23 +1,27 @@
 import React from 'react';
 import MainLayout from '../src/layouts/mainLayout';
-import { Card } from 'antd';
+import { Card, Col } from 'antd';
 import CSS from 'csstype';
 import AppToolbar from '../src/components/appToolbar';
 
-const cardStyle: CSS.Properties = {
-    marginTop: '10px'
+const contentStyle: CSS.Properties = {
+  marginTop: '10px',
+  display: 'flex',
+  justifyContent: 'center'
 };
 
 
 const Index = () => {
-    
+
   return (
     <MainLayout>
-        <AppToolbar/>
-        <Card style={cardStyle}>
-            {value}
+      <AppToolbar />
+      <Col xs={24} sm={{ span: 16, offset: 4 }} style={contentStyle}>
+        <Card>
+          {value}
         </Card>
-        
+      </Col>
+
     </MainLayout>
   );
 };
