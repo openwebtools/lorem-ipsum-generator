@@ -7,7 +7,7 @@ import AppToolbar from '../src/components/appToolbar';
 const contentStyle: CSS.Properties = {
   marginTop: '10px',
   display: 'flex',
-  justifyContent: 'center'
+  flex: '1'
 };
 
 

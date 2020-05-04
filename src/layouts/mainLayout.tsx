@@ -13,7 +13,9 @@ const footerStyle: CSS.Properties = {
 }
 
 const contentStyle: CSS.Properties = {
-    flex: '1'
+    flex: '1',
+    display: 'flex',
+    flexDirection: 'column'
 }
 
 const MainLayout = (props: any) => {
