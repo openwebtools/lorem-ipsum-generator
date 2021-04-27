@@ -26,34 +26,17 @@ const Toolbar = (props: any) => {
       as="nav"
       align="center"
       p={4}
-      justify="space-between"
-      wrap="wrap"
       {...props}
-      direction={["column", "row", "row", "row"]}
+      justify="space-between"
+      w="100%"
     >
-      <Flex
-        align="center"
-        justify="space-between"
-        w={["100%", "auto", "auto", "auto"]}
-      >
-        <NextLink href="/" passHref>
-          <Link>
-            <Heading as="h1" size="md">
-              Lorem Ipsum Generator
-            </Heading>
-          </Link>
-        </NextLink>
-        <IconButton
-          onClick={toggleMenu}
-          aria-label="Open Menu"
-          display={{ base: "block", md: "none" }}
-          icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-          variant="outline"
-        />
-      </Flex>
-
-      <Spacer />
-
+      <NextLink href="/" passHref>
+        <Link>
+          <Heading as="h1" size="md">
+            Lorem Ipsum Generator
+          </Heading>
+        </Link>
+      </NextLink>
       <IconButton
         onClick={handleColorModeClick}
         aria-label="Toggle Color Mode"
