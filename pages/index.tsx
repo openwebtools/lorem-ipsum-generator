@@ -62,7 +62,7 @@ export default function Home() {
     >
       <VStack spacing={4} align="stretch" w={["100%", "80%", "70%", "60%"]}>
         <Text size="md" align="center">
-          A simple unitility to generate Lorem Ipsum placeholder text
+          A simple tool to generate Lorem Ipsum placeholder text
         </Text>
         <Stack
           justify="space-between"
@@ -73,7 +73,7 @@ export default function Home() {
             <NumberInput
               variant="filled"
               w="auto"
-              defaultValue={5}
+              defaultValue={2}
               min={1}
               max={100}
               maxW={20}
