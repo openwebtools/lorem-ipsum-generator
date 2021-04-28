@@ -19,6 +19,7 @@ import {
   useClipboard,
 } from "@chakra-ui/react";
 import { CopyIcon } from "@chakra-ui/icons";
+import { GenerationType } from "../src/models/generationType";
 
 export default function Home() {
   const lorem = new LoremIpsum({
@@ -40,17 +41,33 @@ export default function Home() {
       isClosable: true,
     });
 
-  const [generatedText, setGeneratedText] = useState("");
-  const { onCopy } = useClipboard(generatedText);
+  const [generatedText, setGeneratedText] = useState([]);
+  const [generationCount, setGenerationCount] = useState(2);
+  const [generationType, setGenerationType] = useState(
+    GenerationType.Paragraphs
+  );
+
+  const { onCopy } = useClipboard(generatedText.join("\n"));
 
   useEffect(() => {
-    const text = lorem.generateParagraphs(1);
-    setGeneratedText(text);
-  }, []);
+    const texts = getGeneratedText();
+    setGeneratedText(texts);
+  }, [generationCount, generationType]);
 
   const handleCopyClick = () => {
     onCopy();
     showSuccessToast();
+  };
+
+  const getGeneratedText = (): string[] => {
+    switch (generationType) {
+      case GenerationType.Paragraphs:
+        return lorem.generateParagraphs(generationCount).split("\n");
+      case GenerationType.Sentances:
+        return [lorem.generateSentences(generationCount)];
+      case GenerationType.Words:
+        return [lorem.generateWords(generationCount)];
+    }
   };
 
   return (
@@ -73,10 +90,12 @@ export default function Home() {
             <NumberInput
               variant="filled"
               w="auto"
-              defaultValue={2}
+              defaultValue={generationCount}
               min={1}
               max={100}
               maxW={20}
+              onChange={(_, valueNumber) => setGenerationCount(valueNumber)}
+              value={generationCount}
             >
               <NumberInputField />
               <NumberInputStepper>
@@ -85,7 +104,12 @@ export default function Home() {
               </NumberInputStepper>
             </NumberInput>
 
-            <Select variant="filled" w={["100%", "60%", "auto", "auto"]}>
+            <Select
+              variant="filled"
+              w={["100%", "60%", "auto", "auto"]}
+              value={generationType}
+              onChange={(x) => setGenerationType(Number(x.target.value))}
+            >
               <option value="1">Paragraphs</option>
               <option value="2">Sentences</option>
               <option value="3">Words</option>
@@ -100,7 +124,15 @@ export default function Home() {
           </Button>
         </Stack>
         <Divider />
-        <Box>{generatedText}</Box>
+        <Box>
+          {generatedText.map((x, i) => (
+            <Text key={i}>
+              {x}
+              <br />
+              <br />
+            </Text>
+          ))}
+        </Box>
       </VStack>
     </Layout>
   );
