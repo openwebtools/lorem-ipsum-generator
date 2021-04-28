@@ -6,11 +6,11 @@ name: Build & Deploy
 # events but only for the master branch
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 env:
-  PROD_FLAG: '--prod'
+  PROD_FLAG: "--prod"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -21,35 +21,31 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v2
-    
-    - name: Setup Node
-      uses: actions/setup-node@v1
-      with:
-        node-version: '10.x'
-    
-    - name: Install NPM Dependencies
-      run: npm install
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+        with:
+          # Disabling shallow clone is recommended for improving relevancy of reporting
+          fetch-depth: 0
 
-    - name: Scan with SonarCloud
-      uses: SonarSource/sonarcloud-github-action@v1.1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        
-    - name: Set Preview Deploy Flag
-      if: github.event_name == 'pull_request'
-      uses: allenevans/set-env@v1.1.0
-      with:
-        PROD_FLAG: '' 
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "10.x"
 
-    - name: Deploy to Hosting Provider
-      uses: amondnet/now-deployment@v2.0.2
-      with:
-        zeit-token: ${{ secrets.ZEIT_TOKEN }}
-        now-args: ${{ env.PROD_FLAG }}
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        github-deployment: true
-        now-org-id: ${{ secrets.NOW_ORG_ID}}  
-        now-project-id: ${{ secrets.NOW_PROJECT_ID}} 
+      - name: Install NPM Dependencies
+        run: npm install
+
+      - name: Set Preview Deploy Flag
+        if: github.event_name == 'pull_request'
+        run: |
+          echo "action_state=yellow" >> $GITHUB_ENV
+
+      - name: Deploy to Hosting Provider
+        uses: amondnet/vercel-action@v20
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-args: ${{ env.PROD_FLAG }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-deployment: true
+          vercel-org-id: ${{ secrets.NOW_ORG_ID}}
+          vercel-project-id: ${{ secrets.NOW_PROJECT_ID}}

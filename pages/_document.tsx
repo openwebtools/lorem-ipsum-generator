@@ -1,25 +1,17 @@
-import React from 'react';
-import Document, {Main, NextScript, Head} from 'next/document';
-import Header from '../src/layouts/header';
+import { ColorModeScript } from "@chakra-ui/react";
+import NextDocument, { Html, Head, Main, NextScript } from "next/document";
 
-/**
- * Document.
- */
-export default class AppDocument extends Document {
-  /**
-   * Render function.
-   * @return {JSX.Element} Rendered Document.
-   */
-  render(): JSX.Element {
+export default class Document extends NextDocument {
+  render() {
     return (
-      <html lang='en'>
-        <Head>
-          <Header/>
-        </Head>
+      <Html lang="en">
+        <Head />
         <body>
+          <ColorModeScript initialColorMode="system" />
           <Main />
           <NextScript />
         </body>
-      </html>);
+      </Html>
+    );
   }
 }
