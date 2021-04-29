@@ -50,6 +50,10 @@ export default function Home() {
   const { onCopy } = useClipboard(generatedText.join("\n"));
 
   useEffect(() => {
+    if (!generationCount) {
+      setGenerationCount(0);
+      return;
+    }
     const texts = getGeneratedText();
     setGeneratedText(texts);
   }, [generationCount, generationType]);
@@ -93,7 +97,7 @@ export default function Home() {
               defaultValue={generationCount}
               min={1}
               max={100}
-              maxW={20}
+              width={["30%", "30%", "20%", "10%"]}
               onChange={(_, valueNumber) => setGenerationCount(valueNumber)}
               value={generationCount}
             >
@@ -106,7 +110,7 @@ export default function Home() {
 
             <Select
               variant="filled"
-              w={["100%", "60%", "auto", "auto"]}
+              w={["70%", "70%", "80%", "auto"]}
               value={generationType}
               onChange={(x) => setGenerationType(Number(x.target.value))}
             >
