@@ -1,10 +1,9 @@
-import { CloseIcon, HamburgerIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
+import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import {
   Flex,
   Heading,
   IconButton,
   Link,
-  Spacer,
   useColorMode,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
@@ -13,8 +12,6 @@ import NextLink from "next/link";
 const Toolbar = (props: any) => {
   const { colorMode, toggleColorMode } = useColorMode();
   const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => setIsOpen(!isOpen);
 
   const handleColorModeClick = () => {
     toggleColorMode();
